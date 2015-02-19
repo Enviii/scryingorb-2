@@ -1,4 +1,6 @@
 <?php namespace App\Http\Controllers;
+use GuzzleHttp\Client;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class HomeController extends Controller {
 
@@ -34,7 +36,11 @@ class HomeController extends Controller {
 		
 		$champions = \App\Champion::where('id', '=', 1)->get();
 
-		return view('home')->with('champions', $champions);
+		//list 3 champs on sale next?
+		$champsOnSale = \App\ChampionSale::take(3)->get();
+
+		return view('home')->with('champions', $champions)->with('champsOnSale', $champsOnSale);
+
 	}
 
 }
