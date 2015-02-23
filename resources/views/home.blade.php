@@ -31,14 +31,17 @@
 
 <div class="container">
 	<div class="row">
-		@foreach ($champsOnSale as $element)
+		@foreach ($champsOnSale as $champion)
 			
-			@foreach ($element->champion as $champ)
+			{{{$champion->champion->id}}} - 
+			{{{$champion->champion->name}}} - {{{$champion->sale_price}}} - <strike>{{{$champion->original_price}}}</strike>
 
-				{{$champ->name}}
+			<!-- <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{{$champion->champion->name}}}_0.jpg" alt="{{{$champion->champion->name}}} Splash Art"> -->
 
-			@endforeach
-	
+			<!-- http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg -->
+			
+			<br>
+
 		@endforeach
 	</div>
 </div>

@@ -1,35 +1,33 @@
 <?php namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Inspiring;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use GuzzleHttp\Client;
 use Sunra\PhpSimple\HtmlDomParser;
 
-
-class GetChampionInfo extends Command {
+class getSale extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'getChampionInfo';
+	protected $name = 'getSale';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Make an API call to get champion information';
+	protected $description = 'Scrape the latest LoL sales newspost to get the 3 champions and 3 skins that are going on sale.';
 
 	/**
 	 * Execute the console command.
 	 *
 	 * @return mixed
 	 */
-	public function handle()
+	public function fire()
 	{
 
 		$client = new Client();
@@ -199,8 +197,6 @@ class GetChampionInfo extends Command {
 
 		getSkins($html, $today, $urlFullEndDate, $urlFullStartDate); 
 		getChampions( $champions, $html, $today, $urlFullEndDate, $urlFullStartDate);
-
-
 	}
 
 }

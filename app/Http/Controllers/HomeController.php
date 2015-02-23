@@ -37,7 +37,9 @@ class HomeController extends Controller {
 		$champions = \App\Champion::where('id', '=', 1)->get();
 
 		//list 3 champs on sale next?
-		$champsOnSale = \App\ChampionSale::take(3)->get();
+		$champsOnSale = \App\ChampionSale::with('champion')->take(3)->get();
+
+		\Debugbar::info($champsOnSale);
 
 		return view('home')->with('champions', $champions)->with('champsOnSale', $champsOnSale);
 
